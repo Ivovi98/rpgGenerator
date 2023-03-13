@@ -3,52 +3,79 @@ package com.rpg.rpgGenerator.controller;
 import com.rpg.rpgGenerator.entity.Personaggio;
 import com.rpg.rpgGenerator.service.PersonaggioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import java.sql.Timestamp;
 import java.util.Optional;
-
-@RestController
-@RequestMapping("/personaggi")
 public class PersonaggioController {
 
     @Autowired
     private PersonaggioService personaggioService;
 
-    @GetMapping("/{id}")
-    public Optional<Personaggio> getPersonaggioById(@PathVariable Long id) {
-        return personaggioService.findById(id);
-    }
-
-    @GetMapping("/nome/{nomePersonaggio}")
-    public Personaggio getPersonaggioByNome(@PathVariable String nomePersonaggio) {
-        return personaggioService.findByNomePersonaggio(nomePersonaggio);
-    }
-
-    @GetMapping("/classe/{nomeClasse}")
-    public List<Personaggio> getPersonaggiByClasse(@PathVariable String nomeClasse) {
-        return personaggioService.findAllByClassePersonaggio(nomeClasse);
-    }
-
-    @PostMapping
-    public Personaggio insertPersonaggio(@RequestBody Personaggio p) {
-        return personaggioService.insertPersonaggio(p);
-    }
-
-    @PutMapping("/{id}")
-    public Personaggio updatePersonaggio(@PathVariable Long id, @RequestBody Personaggio p) {
+    @GetMapping("/{id}") //READ GET BY ID
+    public ResponseEntity<Personaggio> getPersonaggioById(@PathVariable Long id){
         Optional<Personaggio> existingPersonaggio = personaggioService.findById(id);
-        if (existingPersonaggio.isPresent()) {
-            p.setIdPersonaggio(id);
-            return personaggioService.save(p);
-        } else {
-            return null; // or throw an exception, or return a response with an error message
+        try {
+            if(existingPersonaggio.isPresent()){
+                return new ResponseEntity<>(existingPersonaggio.get(), HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @DeleteMapping("/{id}")
-    public void deletePersonaggio(@PathVariable Long id) {
+    @PostMapping //CREATE
+    public ResponseEntity<Personaggio> insertPersonaggioPersonaggio(@RequestBody Personaggio personaggio){
+        try {
+            Personaggio p = personaggioService.insertPersonaggio(personaggio);
+            if(p == null){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(p, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @PutMapping("/{id}/{nome}/{cognome}") //EDIT
+    public ResponseEntity<Personaggio> updatePersonaggio(@PathVariable Long id,
+                                                       @PathVariable String nomePersonaggio){
         Optional<Personaggio> existingPersonaggio = personaggioService.findById(id);
-        existingPersonaggio.ifPresent(personaggioService::delete);
+        try {
+            if(existingPersonaggio.isPresent()){
+                Personaggio personaggio = existingPersonaggio.get();
+                personaggio.setNomePersonaggio(nomePersonaggio);
+                personaggio.setDataUltimaModifica(new Timestamp(System.currentTimeMillis()));
+                personaggio.setVersione(personaggio.getVersione() + 1);
+                Personaggio updatedPersonaggio = personaggioService.save(personaggio);
+                return new ResponseEntity<>(updatedPersonaggio, HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/{id}") //DELETE
+    public ResponseEntity<Void> deletePersonaggio(@PathVariable Long id){
+        Optional<Personaggio> existingPersonaggio = personaggioService.findById(id);
+        try {
+            if(existingPersonaggio.isPresent()){
+                personaggioService.delete(existingPersonaggio.get());
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

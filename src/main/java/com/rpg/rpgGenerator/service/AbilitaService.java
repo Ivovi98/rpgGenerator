@@ -4,7 +4,6 @@ import com.rpg.rpgGenerator.entity.Abilita;
 import com.rpg.rpgGenerator.repository.AbilitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
