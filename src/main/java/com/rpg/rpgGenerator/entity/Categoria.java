@@ -9,17 +9,14 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @ToString
-@EqualsAndHashCode
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Categoria {
+public enum Categoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private String nomeAttributiCategoria;
+    nomeAttributiCategoria;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fraseCategoria")
