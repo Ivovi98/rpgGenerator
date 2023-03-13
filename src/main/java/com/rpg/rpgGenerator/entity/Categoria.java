@@ -19,23 +19,20 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long id;
+    private String nomeAttributiCategoria;
 
-    @Column(nullable = false)
+    @Column
     private String descrizioneFraseCategoria;
 
     @CreatedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataCreazione;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataUltimaModifica;
 
     @Version
-    @Column(nullable = false)
+    @Column
     private int versione;
-
-    @Column(nullable = false)
-    private String nomeAttributiCategoria;
 }

@@ -20,26 +20,26 @@ public class Abilita {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long id;
+    private String nomeAttributiAbilita;
 
-    @Column(nullable = false)
+    @Column
     private String nomeAbilita;
 
+    @Column
+    private String descrizioneAbilita;
+
+    @Column
+    private String classeNomeAttributiClasse;
+
     @CreatedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataCreazione;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataUltimaModifica;
 
     @Version
-    @Column(nullable = false)
+    @Column
     private int versione;
-
-    @Column(nullable = false)
-    private String nomeAttributiAbilita;
-
-    @Column(nullable = false)
-    private String descrizioneAbilita;
 }

@@ -17,38 +17,34 @@ import java.sql.Timestamp;
 @Entity
 public class Descrizione {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long id;
+    private String fraseCategoria;
 
-    @Column(nullable = false)
+    @Column
     private String descrizioneClasse;
 
-    @Column(nullable = false)
+    @Column
     private String nomeClasse;
 
+    //FK DI CLASSE
+    @Column
+    private Abilita nomeAttributiAbilita;
+
+    /*
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "categoria_id", nullable = false)
+     */
+    private Categoria categoriaDescrizione;
+
     @CreatedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataCreazione;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataUltimaModifica;
 
     @Version
-    @Column(nullable = false)
+    @Column
     private int versione;
-
-    @Column(nullable = false)
-    private String nomeAttributiClasse;
-
-    @Column(nullable = false)
-    private String nomeAttributiAbilita;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "categoria_id", nullable = false)
-    private Categoria categoriaDescrizione;
-
-    @Column(nullable = false)
-    private String fraseCategoria;
 }

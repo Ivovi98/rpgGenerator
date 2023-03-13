@@ -18,28 +18,24 @@ import java.sql.Timestamp;
 @Entity
 public class Classe {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long id;
+    private String nomeAttributiClasse;
 
-    @Column(nullable = false)
-    private String descrizioneClasse;
-
-    @Column(nullable = false)
+    @Column
     private String nomeClasse;
 
+    @Column
+    private String descrizioneClasse;
+
     @CreatedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataCreazione;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column
     private Timestamp dataUltimaModifica;
 
     @Version
-    @Column(nullable = false)
+    @Column
     private int versione;
-
-    @Column(nullable = false)
-    private String nomeAttributiClasse;
 }

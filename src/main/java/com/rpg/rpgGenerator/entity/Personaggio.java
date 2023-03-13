@@ -23,8 +23,8 @@ public class Personaggio {
     private Long idPersonaggio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_classe")
-    private Classe classePersonaggio;
+    @JoinColumn(name = "NomeAttributiClasse")
+    private Classe nomeAttributiClasse;
 
     @Column
     private String nomePersonaggio;
@@ -36,7 +36,7 @@ public class Personaggio {
     private int forzaPersonaggio;
 
     @Column
-    private int intelligenzaPersonaggio;
+    private int intellijPersonaggio;
 
     @Column
     private int salutePersonaggio;
@@ -52,5 +52,4 @@ public class Personaggio {
     @Version
     @Column
     private int versione;
-
 }
