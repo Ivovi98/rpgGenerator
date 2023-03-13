@@ -26,15 +26,20 @@ public class AbilitaService {
         return abilitaRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
     }
 
-    public Abilita save(Abilita abilita) {
-        return abilitaRepository.save(abilita);
-    }
-
-    public void delete(Abilita abilita) {
-        abilitaRepository.delete(abilita);
-    }
-
     public Optional<Abilita> findById(String id) {
         return abilitaRepository.findById(id);
+    }
+
+    public Abilita insertAbilita(Abilita a) {
+        return abilitaRepository.save(a);
+
+    }
+
+    public Abilita save(Abilita a) {
+        return abilitaRepository.save(a);
+    }
+
+    public void delete(Abilita a) {
+        abilitaRepository.delete(a);
     }
 }

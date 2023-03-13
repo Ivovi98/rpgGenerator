@@ -4,6 +4,7 @@ import com.rpg.rpgGenerator.entity.Classe;
 import com.rpg.rpgGenerator.repository.ClasseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 @Service
 public class ClasseService {
@@ -15,11 +16,20 @@ public class ClasseService {
         return classeRepository.findByNomeClasse(nomeClasse);
     }
 
-    public Classe saveClasse(Classe classe) {
-        return classeRepository.save(classe);
+    public Optional<Classe> findById(String id) {
+        return classeRepository.findById(id);
     }
 
-    public void deleteClasse(Classe classe) {
-        classeRepository.delete(classe);
+    public Classe insertClasse(Classe c) {
+        return classeRepository.save(c);
+
+    }
+
+    public Classe save(Classe c) {
+        return classeRepository.save(c);
+    }
+
+    public void delete(Classe c) {
+        classeRepository.delete(c);
     }
 }
