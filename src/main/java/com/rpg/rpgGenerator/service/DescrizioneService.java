@@ -18,7 +18,11 @@ public class DescrizioneService {
         return descrizioneRepository.findAll();
     }
 
-    public Optional<Descrizione> findById(Long id) {
+    public Descrizione insertDescrizione(Descrizione descrizione) {
+        return descrizioneRepository.save(descrizione);
+    }
+
+    public Optional<Descrizione> findById(String id) {
         return descrizioneRepository.findById(id);
     }
 
@@ -30,7 +34,11 @@ public class DescrizioneService {
         descrizioneRepository.delete(descrizione);
     }
 
-    public List<Descrizione> findByCategoriaDescrizione(String categoriaDescrizione) {
+    public Descrizione findByCategoriaDescrizione(String categoriaDescrizione) {
         return descrizioneRepository.findByCategoriaDescrizione(categoriaDescrizione);
+    }
+
+    public List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
+        return descrizioneRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
     }
 }

@@ -18,8 +18,12 @@ public class AbilitaService {
         return abilitaRepository.findAll();
     }
 
-    public Optional<Abilita> findById(Long id) {
-        return abilitaRepository.findById(id);
+    public Abilita findByNomeAbilita(String nomeAbilita) {
+        return abilitaRepository.findByNomeAbilita(nomeAbilita);
+    }
+
+    public List<Abilita> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
+        return abilitaRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
     }
 
     public Abilita save(Abilita abilita) {
@@ -30,7 +34,7 @@ public class AbilitaService {
         abilitaRepository.delete(abilita);
     }
 
-    public List<Abilita> findByNomeAbilita(String nomeAbilita) {
-        return abilitaRepository.findByNomeAbilita(nomeAbilita);
+    public Optional<Abilita> findById(String id) {
+        return abilitaRepository.findById(id);
     }
 }
