@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 
-public interface AbilitaRepository extends JpaRepository<Abilita, Long> {
+public interface AbilitaRepository extends JpaRepository<Abilita, String> {
 
     @Query("SELECT a FROM Abilita a WHERE a.nomeAbilita = ?1")
     Abilita findByNomeAbilita(String nomeAbilita);

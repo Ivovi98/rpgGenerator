@@ -23,9 +23,6 @@ public class Descrizione {
     @Column
     private String descrizioneClasse;
 
-    @Column
-    private String nomeClasse;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nomeAttributiAbilita")
     private Abilita nomeAttributiAbilita;

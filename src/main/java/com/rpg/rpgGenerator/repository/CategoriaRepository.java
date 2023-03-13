@@ -6,13 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
-
-    @Query("SELECT c FROM Categoria c WHERE c.nomeAttributiCategoria LIKE %?1%")
-    List<Categoria> findByNomeAttributiCategoriaContaining(String keyword);
-
-    @Query("SELECT COUNT(c) FROM Categoria c")
-    Long countAll();
+public interface CategoriaRepository extends JpaRepository<Categoria, Enum> {
 
     @Query("SELECT c.nomeAttributiCategoria FROM Categoria c")
     List<String> findAllNames();

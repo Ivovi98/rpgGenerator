@@ -6,14 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface DescrizioneRepository extends JpaRepository<Descrizione, Long> {
+public interface DescrizioneRepository extends JpaRepository<Descrizione, String> {
 
-    @Query("SELECT d FROM Descrizione d WHERE d.nomeClasse = ?1")
-    Descrizione findByNomeClasse(String nomeClasse);
+    @Query("SELECT d FROM Descrizione d WHERE d.categoriaDescrizione = :categoriaDescrizione")
+    Descrizione findByCategoriaDescrizione(String categoriaDescrizione);
 
-    @Query("SELECT d FROM Descrizione d WHERE d.abilita.nomeAttributiAbilita LIKE %?1%")
+    @Query("SELECT d FROM Descrizione d WHERE d.abilita.nomeAttributiAbilita = :nomeAttributiAbilita")
     List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita);
 
-    @Query("SELECT d FROM Descrizione d WHERE d.categoria.descrizioneFraseCategoria = ?1")
-    Descrizione findByCategoria(String categoria);
 }
