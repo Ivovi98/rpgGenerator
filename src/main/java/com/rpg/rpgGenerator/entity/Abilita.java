@@ -28,8 +28,9 @@ public class Abilita {
     @Column
     private String descrizioneAbilita;
 
-    @Column
-    private String classeNomeAttributiClasse;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "nomeAttributiClasse")
+    private Classe nomeAttributiClasse;
 
     @CreatedDate
     @Column

@@ -26,15 +26,12 @@ public class Descrizione {
     @Column
     private String nomeClasse;
 
-    //FK DI CLASSE
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "nomeAttributiAbilita")
     private Abilita nomeAttributiAbilita;
 
-    /*
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "categoria_id", nullable = false)
-     */
-    private Categoria categoriaDescrizione;
+    @Column
+    private String categoriaDescrizione;
 
     @CreatedDate
     @Column
