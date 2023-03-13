@@ -16,7 +16,9 @@ import java.sql.Timestamp;
 public enum Categoria {
     @Id
     @Column(nullable = false)
-    nomeAttributiCategoria;
+    LADRO,
+    GUERRIERO,
+    NINJA;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fraseCategoria")
