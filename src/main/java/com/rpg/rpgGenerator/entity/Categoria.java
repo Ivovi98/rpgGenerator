@@ -21,8 +21,9 @@ public class Categoria {
     @Column(nullable = false)
     private String nomeAttributiCategoria;
 
-    @Column
-    private String descrizioneFraseCategoria;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fraseCategoria")
+    private Descrizione fraseCategoria;
 
     @CreatedDate
     @Column
