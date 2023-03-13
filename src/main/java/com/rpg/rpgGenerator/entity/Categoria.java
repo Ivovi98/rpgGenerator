@@ -35,4 +35,13 @@ public enum Categoria {
     @Version
     @Column
     private int versione;
+
+    public Object getNomeAttributiCategoria() {
+        Object o = null;
+        return o;
+    }
+
+    public void setNomeAttributiCategoria(Object nomeAttributiCategoria) {
+
+    }
 }

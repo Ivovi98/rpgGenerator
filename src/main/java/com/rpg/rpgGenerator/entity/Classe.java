@@ -38,4 +38,7 @@ public class Classe {
     @Version
     @Column
     private int versione;
+
+    public void setId(String id) {
+    }
 }

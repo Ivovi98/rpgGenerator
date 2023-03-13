@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface AbilitaRepository extends JpaRepository<Abilita, Long> {
+public interface AbilitaRepository extends JpaRepository<Abilita, String> {
 
     @Query("SELECT a FROM Abilita a WHERE a.nomeAbilita = ?1")
     Abilita findByNomeAbilita(String nomeAbilita);

@@ -18,7 +18,7 @@ public class CategoriaService {
         return categoriaRepository.findAllNames();
     }
 
-    public Optional<Categoria> findById(String id) {
+    public Optional<Categoria> findById(Enum id) {
         return categoriaRepository.findById(id);
     }
 
