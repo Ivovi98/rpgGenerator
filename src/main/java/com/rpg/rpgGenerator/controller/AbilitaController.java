@@ -22,7 +22,7 @@ public class AbilitaController {
     }
      */
 
-    @GetMapping("") //READ GET BY ID
+    @GetMapping("/{id}") //READ GET BY ID
     public ResponseEntity<Abilita> getAbilitaById(@PathVariable String id){
         Optional<Abilita> existingAbilita = abilitaService.findById(id);
         try {
