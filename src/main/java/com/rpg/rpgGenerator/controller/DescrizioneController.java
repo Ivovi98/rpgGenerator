@@ -36,7 +36,7 @@ public class DescrizioneController {
         Optional<Descrizione> existingDescrizione = descrizioneService.findById(id);
         if (existingDescrizione.isPresent()) {
             Descrizione descrizioneToUpdate = existingDescrizione.get();
-            descrizioneToUpdate.setFraseCategoria(descrizione.getFraseCategoria());
+            descrizioneToUpdate.setDescrizione(descrizione.getDescrizione());
             descrizioneToUpdate.setDescrizioneClasse(descrizione.getDescrizioneClasse());
             descrizioneToUpdate.setNomeAttributiAbilita(descrizione.getNomeAttributiAbilita());
             descrizioneToUpdate.setCategoriaDescrizione(descrizione.getCategoriaDescrizione());
