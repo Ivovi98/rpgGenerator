@@ -35,14 +35,14 @@ public class PersonaggioController {
             if(p == null){
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            return new ResponseEntity<>(p, HttpStatus.CREATED);
+            return new ResponseEntity<>(p, HttpStatus.CREATED); //201
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
-    @PutMapping("/{id}/{nome}/{cognome}") //EDIT
+    @PutMapping("/{id}/{nome}") //EDIT
     public ResponseEntity<Personaggio> updatePersonaggio(@PathVariable Long id,
                                                        @PathVariable String nomePersonaggio){
         Optional<Personaggio> existingPersonaggio = personaggioService.findById(id);

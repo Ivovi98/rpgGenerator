@@ -3,10 +3,9 @@ package com.rpg.rpgGenerator.controller;
 import com.rpg.rpgGenerator.entity.Abilita;
 import com.rpg.rpgGenerator.service.AbilitaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,11 +15,29 @@ public class AbilitaController {
     @Autowired
     private AbilitaService abilitaService;
 
+    /*
     @GetMapping("")
     public List<Abilita> findAll() {
         return abilitaService.findAll();
     }
+     */
 
+    @GetMapping("") //READ GET BY ID
+    public ResponseEntity<Abilita> getAbilitaById(@PathVariable String id){
+        Optional<Abilita> existingAbilita = abilitaService.findById(id);
+        try {
+            if(existingAbilita.isPresent()){
+                return new ResponseEntity<>(existingAbilita.get(), HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /* METODO GET READ
     @GetMapping("/{id}")
     public ResponseEntity<Abilita> findById(@PathVariable String id) {
         Optional<Abilita> abilita = abilitaService.findById(id);
@@ -37,6 +54,7 @@ public class AbilitaController {
     public List<Abilita> findAllByNomeAttributiAbilitaContaining(@PathVariable String nomeAttributiAbilita) {
         return abilitaService.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
     }
+    */
 
     @PostMapping("")
     public Abilita create(@RequestBody Abilita abilita) {

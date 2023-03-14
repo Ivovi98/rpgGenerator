@@ -16,6 +16,22 @@ public class ClasseController {
     @Autowired
     private ClasseService classeService;
 
+    @GetMapping("/{id}") //READ GET BY ID
+    public ResponseEntity<Classe> getClasseById(@PathVariable String id){
+        Optional<Classe> existingClasse = classeService.findById(id);
+        try {
+            if(existingClasse.isPresent()){
+                return new ResponseEntity<>(existingClasse.get(), HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /* METODO GET
     @GetMapping("/{id}")
     public ResponseEntity<?> getClasse(@PathVariable String id) {
         Optional<Classe> classe = classeService.findById(id);
@@ -25,6 +41,7 @@ public class ClasseController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+     */
 
     @PostMapping
     public ResponseEntity<?> addClasse(@RequestBody Classe classe) {
