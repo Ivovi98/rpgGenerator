@@ -26,8 +26,8 @@ public class AbilitaService {
         return abilitaRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
     }
 
-    public Optional<Abilita> findByNomeAbilita(String id) {
-        return abilitaRepository.findById(id);
+    public Abilita findByNomeAbilita(String nomeAbilita) {
+        return abilitaRepository.findByNomeAbilita(nomeAbilita);
     }
 
     public Abilita insertAbilita(Abilita a) {

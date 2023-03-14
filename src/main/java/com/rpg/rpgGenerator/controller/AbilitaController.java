@@ -24,7 +24,7 @@ public class AbilitaController {
 
     @GetMapping("/{id}") //READ GET BY ID
     public ResponseEntity<Abilita> getAbilitaById(@PathVariable String id){
-        Optional<Abilita> existingAbilita = abilitaService.findByNomeAbilita(id);
+        Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByNomeAbilita(id));
         try {
             if(existingAbilita.isPresent()){
                 return new ResponseEntity<>(existingAbilita.get(), HttpStatus.OK);
@@ -33,6 +33,7 @@ public class AbilitaController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -63,7 +64,7 @@ public class AbilitaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Abilita> update(@PathVariable String id, @RequestBody Abilita abilita) {
-        Optional<Abilita> existingAbilita = abilitaService.findByNomeAbilita(id);
+        Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByNomeAbilita(id));
         if (existingAbilita.isPresent()) {
             Abilita updatedAbilita = abilitaService.save(abilita);
             return ResponseEntity.ok(updatedAbilita);
@@ -74,7 +75,7 @@ public class AbilitaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
-        Optional<Abilita> abilita = abilitaService.findByNomeAbilita(id);
+        Optional<Abilita> abilita = Optional.ofNullable(abilitaService.findByNomeAbilita(id));
         if (abilita.isPresent()) {
             abilitaService.delete(abilita.get());
             return ResponseEntity.noContent().build();
