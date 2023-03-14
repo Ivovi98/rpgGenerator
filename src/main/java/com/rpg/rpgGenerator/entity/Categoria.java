@@ -13,16 +13,14 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public enum Categoria {
-    @Id
-    @Column(nullable = false)
-    LADRO,
-    GUERRIERO,
-    NINJA;
+public class Categoria {
+   @Id
+   @Column(nullable = false)
+   private String nomeAttributiCategoria;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fraseCategoria")
-    private Descrizione fraseCategoria;
+    @JoinColumn(name = "descrizione")
+    private Descrizione descrizione;
 
     @CreatedDate
     @Column

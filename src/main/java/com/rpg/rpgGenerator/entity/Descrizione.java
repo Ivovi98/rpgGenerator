@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 public class Descrizione {
     @Id
     @Column(nullable = false)
-    private String fraseCategoria;
+    private String descrizione;
 
     @Column
     private String descrizioneClasse;
