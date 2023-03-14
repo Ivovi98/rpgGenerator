@@ -16,11 +16,6 @@ public class AbilitaService {
     public List<Abilita> findAll() {
         return abilitaRepository.findAll();
     }
-/*
-    public Abilita findByNomeAbilita(String nomeAbilita) {
-        return abilitaRepository.findByNomeAbilita(nomeAbilita);
-    }
-*/
 
     public List<Abilita> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
         return abilitaRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);

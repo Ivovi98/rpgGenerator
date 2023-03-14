@@ -22,9 +22,9 @@ public class AbilitaController {
     }
      */
 
-    @GetMapping("/{id}") //READ GET BY ID
-    public ResponseEntity<Abilita> getAbilitaById(@PathVariable String id){
-        Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByNomeAbilita(id));
+    @GetMapping("/{nomeAbilita}") //READ GET BY ID
+    public ResponseEntity<Abilita> getAbilitaByNomeAbilita(@PathVariable String nomeAbilita){
+        Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByNomeAbilita(nomeAbilita));
         try {
             if(existingAbilita.isPresent()){
                 return new ResponseEntity<>(existingAbilita.get(), HttpStatus.OK);
