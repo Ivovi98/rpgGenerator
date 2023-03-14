@@ -24,7 +24,7 @@ public class AbilitaController {
 
     @GetMapping("/{id}") //READ GET BY ID
     public ResponseEntity<Abilita> getAbilitaById(@PathVariable String id){
-        Optional<Abilita> existingAbilita = abilitaService.findById(id);
+        Optional<Abilita> existingAbilita = abilitaService.findByNomeAbilita(id);
         try {
             if(existingAbilita.isPresent()){
                 return new ResponseEntity<>(existingAbilita.get(), HttpStatus.OK);
@@ -63,7 +63,7 @@ public class AbilitaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Abilita> update(@PathVariable String id, @RequestBody Abilita abilita) {
-        Optional<Abilita> existingAbilita = abilitaService.findById(id);
+        Optional<Abilita> existingAbilita = abilitaService.findByNomeAbilita(id);
         if (existingAbilita.isPresent()) {
             Abilita updatedAbilita = abilitaService.save(abilita);
             return ResponseEntity.ok(updatedAbilita);
@@ -74,7 +74,7 @@ public class AbilitaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
-        Optional<Abilita> abilita = abilitaService.findById(id);
+        Optional<Abilita> abilita = abilitaService.findByNomeAbilita(id);
         if (abilita.isPresent()) {
             abilitaService.delete(abilita.get());
             return ResponseEntity.noContent().build();
