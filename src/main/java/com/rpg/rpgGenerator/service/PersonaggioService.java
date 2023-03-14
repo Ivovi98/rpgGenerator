@@ -17,9 +17,9 @@ public class PersonaggioService {
         return personaggioRepository.findByNomePersonaggio(nomePersonaggio);
     }
 
-    public List<Personaggio> findAllByClassePersonaggio(String classePersonaggio) {
+    /*public List<Personaggio> findAllByClassePersonaggio(String classePersonaggio) {
         return personaggioRepository.findAllByClassePersonaggio(classePersonaggio);
-    }
+    }*/
 
     public Optional<Personaggio> findById(Long id) {
         return personaggioRepository.findById(id);

@@ -12,6 +12,6 @@ public interface DescrizioneRepository extends JpaRepository<Descrizione, String
     @Query("SELECT d FROM Descrizione d WHERE d.categoriaDescrizione = :categoriaDescrizione")
     Descrizione findByCategoriaDescrizione(String categoriaDescrizione);
 
-    @Query("SELECT d FROM Descrizione d WHERE d.abilita.nomeAttributiAbilita = :nomeAttributiAbilita")
-    List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita);
+    /*@Query("SELECT d FROM Descrizione d WHERE d.abilita.nomeAttributiAbilita = :nomeAttributiAbilita")
+    List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita);*/
 }

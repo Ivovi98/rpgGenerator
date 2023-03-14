@@ -18,9 +18,9 @@ public class DescrizioneService {
         return descrizioneRepository.findByCategoriaDescrizione(categoriaDescrizione);
     }
 
-    public List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
+    /*public List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
         return descrizioneRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
-    }
+    }*/
 
     public Optional<Descrizione> findById(String id) {
         return descrizioneRepository.findById(id);
