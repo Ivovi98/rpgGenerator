@@ -57,10 +57,10 @@ CREATE TABLE `categoria` (
   `versione` int DEFAULT NULL,
   `dataCreazione` datetime DEFAULT NULL,
   `dataUltimaModifica` datetime DEFAULT NULL,
-  `Descrizione_fraseCategoria` varchar(45) NOT NULL,
+  `Descrizione_descrizione` varchar(45) NOT NULL,
   PRIMARY KEY (`nomeAttributiCategoria`),
-  KEY `fk_Categoria_Descrizione1_idx` (`Descrizione_fraseCategoria`),
-  CONSTRAINT `fk_Categoria_Descrizione1` FOREIGN KEY (`Descrizione_fraseCategoria`) REFERENCES `descrizione` (`fraseCategoria`)
+  KEY `fk_Categoria_Descrizione1_idx` (`Descrizione_descrizione`),
+  CONSTRAINT `fk_Categoria_Descrizione1` FOREIGN KEY (`Descrizione_descrizione`) REFERENCES `descrizione` (`descrizione`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -108,13 +108,13 @@ DROP TABLE IF EXISTS `descrizione`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `descrizione` (
-  `fraseCategoria` varchar(45) NOT NULL,
+  `descrizione` varchar(45) NOT NULL,
   `versione` int DEFAULT NULL,
   `dataCreazione` datetime DEFAULT NULL,
   `dataUltimaModifica` datetime DEFAULT NULL,
   `categoriaDescrizione` varchar(45) NOT NULL,
   `Abilita_nomeAttributiAbilita` varchar(45) NOT NULL,
-  PRIMARY KEY (`fraseCategoria`),
+  PRIMARY KEY (`descrizione`),
   KEY `fk_Descrizione_Abilita1_idx` (`Abilita_nomeAttributiAbilita`),
   CONSTRAINT `fk_Descrizione_Abilita1` FOREIGN KEY (`Abilita_nomeAttributiAbilita`) REFERENCES `abilita` (`nomeAttributiAbilita`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -173,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-13 12:22:04
+-- Dump completed on 2023-03-14 10:00:04
